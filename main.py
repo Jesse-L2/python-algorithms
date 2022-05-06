@@ -32,8 +32,8 @@ def insertion_sort(array):
 
 """
 Notes:
-Time Complexity O(n^2)
-Space Complexity O(n)
+Time Complexity - O(n^2)
+Space Complexity - O(n)
 Useful when the number of elements in an array or list is small or only a few elements are in an unsorted location
 Best case scenario: array already in sorted order making Time Complexity O(n)
 Worst case scenario: array in reverse sorted order making Time Complexity O(n^2). Specifically has a quadratic runtime
@@ -46,15 +46,17 @@ def reverse_insertion_sort(array):
     pass
 
 
-# Implementation for function for Merge Sort
 """
-Merge-sort is an optimal sorting algorithm that can be accomplished with a divide-and-conquer strategy. 
-First, compute the midpoint and divide the subarray into two subarrays, each of half the size of the original. 
-Second, recursively sort each of the newly created subarrays.
+Merge-sort is an optimal sorting algorithm that can be accomplished with a divide-and-conquer strategy. Merge-sort
+will always go through the full sorting process regardless of how ordered the initial array is so it may not always be
+the fastest option for small arrays. 
+First, compute the midpoint and divide the subarray into two sub-arrays, each of half the size of the original. 
+Second, recursively sort each of the newly created sub-arrays.
 Third, merge the two sorted sub-arrays to produce the fully sorted array.
 """
 
 
+# Implementation for function for Merge Sort
 def merge_sort(array):
     # If len(array) == 1 or 0, the array is already sorted -> base case
     # We will only sort if there are at least 2 elements in the array
@@ -80,10 +82,10 @@ def merge_sort(array):
             # add left value to merged
             if left[i] < right[j]:
                 array[k] = left[i]
-                i += 1
+                i += 1  # increment i to check the next value in left array
             else:  # left value of left array is equal or greater than the left value of right array
                 array[k] = right[j]
-                j += 1
+                j += 1  # increment j to check the next value in right array
             k += 1  # we want to increment k every time that way we don't overwrite our array
 
         while i < len(left):  # Checking if the left array is still incomplete
@@ -100,10 +102,15 @@ def merge_sort(array):
 
 
 print(merge_sort(arr_2))
+
 """
-Time Complexity O(nlog(n))
-Space Complexity 
-Useful when 
-Best case scenario: 
-Worst case scenario: 
+Time Complexity - O(nlog(n)) because we repeatedly divide the array into halves and it takes linear time to merge each 
+of those halves. 
+Space Complexity - O(n) for the temporary array 
+Useful when sorting a large amount of elements or for sorting linked lists because the linked lists won't require extra
+space.
+Best case scenario: O(nlog(n)) - unfortunately we still have to check each element against each other so there is no 
+speed boost available in the case that the list is already sorted
+Worst case scenario: O(nlog(n)). 
+Generally merge sort is  relatively slow for small arrays. 
 """
