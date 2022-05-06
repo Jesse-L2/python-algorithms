@@ -42,9 +42,27 @@ of an^2 + bn + c, though the bn and c elements are negligible at high values of 
 
 
 # Implementation for function for Insert Sort in reverse order
-def reverse_insertion_sort(array):
-    pass
+"""
+reverse_insertion_sort functions the same as the above insertion sort, except we change the sign of the second
+argument in the while loop to 'current_value > array[j]'. This checks if the current value is greater than the value
+before it rather than less than the preceding value, otherwise the algorithm functions the same. 
+"""
 
+def reverse_insertion_sort(array):
+    for i in range(1, len(array)):
+        current_value = array[i]
+        j = i - 1
+
+        while j >= 0 and current_value > array[j]:
+            array[j + 1] = array[j]
+            j -= 1
+
+        array[j + 1] = current_value
+
+    return array
+
+
+print(reverse_insertion_sort(arr_2))
 
 """
 Merge-sort is an optimal sorting algorithm that can be accomplished with a divide-and-conquer strategy. Merge-sort
@@ -68,9 +86,10 @@ def merge_sort(array):
         left = array[:mid]  # Slice up to midpoint
         right = array[mid:]  # Slice from midpoint to end
 
-        # Sort the two array halves (recursion)
+        # Sort the two array halves (recursion), each merge_sort() call sends us back to the beginning of the function
         merge_sort(left)
         merge_sort(right)
+        # At the end of this step, we have every element in an individual array by themselves
 
         # Merge the two arrays
         i = 0  # index of left-most element in left array
@@ -101,7 +120,7 @@ def merge_sort(array):
     return array
 
 
-print(merge_sort(arr_2))
+# print(merge_sort(arr_2))
 
 """
 Time Complexity - O(nlog(n)) because we repeatedly divide the array into halves and it takes linear time to merge each 
