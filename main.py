@@ -35,10 +35,15 @@ Notes:
 Time Complexity O(n^2)
 Space Complexity O(n)
 Useful when the number of elements in an array or list is small or only a few elements are in an unsorted location
+Best case scenario: array already in sorted order making Time Complexity O(n)
+Worst case scenario: array in reverse sorted order making Time Complexity O(n^2). Specifically has a quadratic runtime
+of an^2 + bn + c, though the bn and c elements are negligible at high values of n compared to n^2.
 '''
 
+# Implementation for function for Insert Sort in reverse order
 def reverse_insertion_sort(array):
     pass
 
+# Implementation for function for Merge Sort
 def merge_sort(array):
     pass
