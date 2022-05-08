@@ -1,8 +1,13 @@
+"""
+pythonSortingAlgorithms is an open source repository for popular sorting algorithms in Python containing detailed notes
+about each step in the sorting process.
+"""
+# arr_1 and arr_2 are test arrays to check sorting algorithm functionality
 arr_1 = [31, 41, 49, 3, 26, 11, 41, 48]
 arr_2 = [7, 5, 2, 4, 6, 1, 3, 9, 8, 4]  # note there are 2 4's to check edge case of having duplicates in array
 
 
-# Function for Insertion Sort
+# Implementation for function for Insertion Sort
 def insertion_sort(array):
     # Iterate through the array from 1 to length of the array (arr[n]) in ascending order
     for i in range(1, len(array)):
@@ -41,13 +46,13 @@ of an^2 + bn + c, though the bn and c elements are negligible at high values of 
 """
 
 
-# Implementation for function for Insert Sort in reverse order
+
 """
 reverse_insertion_sort functions the same as the above insertion sort, except we change the sign of the second
 argument in the while loop to 'current_value > array[j]'. This checks if the current value is greater than the value
 before it rather than less than the preceding value, otherwise the algorithm functions the same. 
 """
-
+# Implementation for function for Insert Sort in reverse order
 def reverse_insertion_sort(array):
     for i in range(1, len(array)):
         current_value = array[i]
@@ -132,4 +137,9 @@ Best case scenario: O(nlog(n)) - unfortunately we still have to check each eleme
 speed boost available in the case that the list is already sorted
 Worst case scenario: O(nlog(n)). 
 Generally merge sort is  relatively slow for small arrays. 
+"""
+
+
+"""
+Bubble-sort
 """
