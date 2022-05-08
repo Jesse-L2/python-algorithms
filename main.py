@@ -36,7 +36,7 @@ def insertion_sort(array):
 # print(insertion_sort(arr_2))
 
 """
-Notes:
+Insertion Sort Notes:
 Time Complexity - O(n^2)
 Space Complexity - O(n)
 Useful when the number of elements in an array or list is small or only a few elements are in an unsorted location
@@ -143,3 +143,5 @@ Generally merge sort is  relatively slow for small arrays.
 """
 Bubble-sort
 """
+def bubble_sort(arr):
+    pass
