@@ -45,13 +45,13 @@ Worst case scenario: array in reverse sorted order making Time Complexity O(n^2)
 of an^2 + bn + c, though the bn and c elements are negligible at high values of n compared to n^2.
 """
 
-
-
 """
 reverse_insertion_sort functions the same as the above insertion sort, except we change the sign of the second
 argument in the while loop to 'current_value > array[j]'. This checks if the current value is greater than the value
 before it rather than less than the preceding value, otherwise the algorithm functions the same. 
 """
+
+
 # Implementation for function for Insert Sort in reverse order
 def reverse_insertion_sort(array):
     for i in range(1, len(array)):
@@ -139,11 +139,27 @@ Worst case scenario: O(nlog(n)).
 Generally merge sort is  relatively slow for small arrays. 
 """
 
+"""
+Bubble sort starts at the beginning of a list and compares pairs of data items as it moves to the end.
+If a pair of items are out of order, they are swapped, effectively bubbling large items to the end of the list.
+The bubble sort algorithm then repeats the process until the list is sorted.
+"""
+
+
+def bubbleSort(arr):
+    n = len(arr)
+    while n > 1:  # Do n - 1 bubbles
+        i = 1  # Start the bubble
+        while i < n:
+            if arr[i] < arr[i - 1]:  # If the element in question is less than the item to the left, swap
+                arr[i], arr[i - 1] = arr[i - 1], arr[i]
+            i += 1
+        n -= 1
+    return arr
+
 
 """
-Bubble-sort
+Time complexity of O(n^2). Some minor improvements can be made to the best case scenario by 
+implementing a boolean flag that checks whether no swaps occurred on a run and returning the list immediately after one
+run if that is the case. 
 """
-def bubble_sort(arr):
-    pass
-
-
