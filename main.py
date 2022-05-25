@@ -190,5 +190,5 @@ def quickSort(arr):  # Recursive solution
         pivot = arr[0]  # Select first element of arr as pivot
         lesser_values = [i for i in arr[1:] if i <= pivot]
         greater_values = [i for i in arr[1:] if i > pivot]
-        return quickSort(lesser_values) + [pivot] + quickSort(greater_values)
+        return quickSort(lesser_values) + [pivot] + quickSort(greater_values)  # Recursive call
 
