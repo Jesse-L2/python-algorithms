@@ -67,8 +67,6 @@ def reverse_insertion_sort(array):
     return array
 
 
-print(reverse_insertion_sort(arr_2))
-
 """
 Merge-sort is an optimal sorting algorithm that can be accomplished with a divide-and-conquer strategy. Merge-sort
 will always go through the full sorting process regardless of how ordered the initial array is so it may not always be
@@ -125,7 +123,7 @@ def merge_sort(array):
     return array
 
 
-# print(merge_sort(arr_2))
+
 
 """
 Time Complexity - O(nlog(n)) because we repeatedly divide the array into halves and it takes linear time to merge each 
@@ -180,11 +178,17 @@ Performance can vary heavily depending on what value is chosen as the pivot, thu
 advantageous to select a random position or a median value of first/middle/last elements as the start location
 """
 
-def quickSort(arr):
+def quickSort(arr):  # Recursive solution
     n = len(arr)
-
     # Establish base case
     if n < 2:
         return arr
+    # if not base case, quicksort can be easily implemented in Python with list comprehensions by subdividing into 2
+    # lists with one being values less than or equal to the pivot and the other being greater than the pivot
+    # and then returning the two sides of those lists recursively with the pivot in the middle and exiting on base case
+    else:
+        pivot = arr[0]  # Select first element of arr as pivot
+        lesser_values = [i for i in arr[1:] if i <= pivot]
+        greater_values = [i for i in arr[1:] if i > pivot]
+        return quickSort(lesser_values) + [pivot] + quickSort(greater_values)
 
-    current_position = 0
