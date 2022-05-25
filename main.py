@@ -12,15 +12,15 @@ def insertion_sort(array):
     # Iterate through the array from 1 to length of the array (arr[n]) in ascending order
     for i in range(1, len(array)):
 
-        current_value = array[i]  # this starts at 1 and will hold the value that j+1 will become allowing for swap
+        current_position = array[i]  # this starts at 1 and will hold the value that j+1 will become allowing for swap
 
         # Move the elements of the array [0... i - 1] that are greater than the key to one position ahead of their
         # current position
         j = i - 1  # set j equal to the position before i
 
-        while j >= 0 and current_value < array[j]:  # compare the current key value to the value before it
+        while j >= 0 and current_position < array[j]:  # compare the current key value to the value before it
             """
-            If an element is larger than the previous value, we continue to the next value setting it as current_value
+            If an element is larger than the previous value, we continue to the next value setting it as current_position
             If the current value < the value before it, then move the larger element up one space
             Basically shift all elements to the right to create the position for the unsorted element
             """
@@ -28,7 +28,7 @@ def insertion_sort(array):
             array[j + 1] = array[j]  # moving j one position to the right
             j -= 1  # decrementing j by one moves us one position to the left, letting us check the next element
 
-        array[j + 1] = current_value  # Insert the unsorted element into the correct position
+        array[j + 1] = current_position  # Insert the unsorted element into the correct position
 
     return array
 
@@ -47,7 +47,7 @@ of an^2 + bn + c, though the bn and c elements are negligible at high values of 
 
 """
 reverse_insertion_sort functions the same as the above insertion sort, except we change the sign of the second
-argument in the while loop to 'current_value > array[j]'. This checks if the current value is greater than the value
+argument in the while loop to 'current_position > array[j]'. This checks if the current value is greater than the value
 before it rather than less than the preceding value, otherwise the algorithm functions the same. 
 """
 
@@ -55,14 +55,14 @@ before it rather than less than the preceding value, otherwise the algorithm fun
 # Implementation for function for Insert Sort in reverse order
 def reverse_insertion_sort(array):
     for i in range(1, len(array)):
-        current_value = array[i]
+        current_position = array[i]
         j = i - 1
 
-        while j >= 0 and current_value > array[j]:
+        while j >= 0 and current_position > array[j]:
             array[j + 1] = array[j]
             j -= 1
 
-        array[j + 1] = current_value
+        array[j + 1] = current_position
 
     return array
 
@@ -163,3 +163,28 @@ Time complexity of O(n^2). Some minor improvements can be made to the best case 
 implementing a boolean flag that checks whether no swaps occurred on a run and returning the list immediately after one
 run if that is the case. 
 """
+
+"""
+Quicksort - 
+1) Select the item at the list's midpoint which we will call the pivot.
+2) Partition the items in the list so that all items less than the pivot are moved to the left of the pivot and do the
+same so that all items greater than the pivot are moved to the right. The final position of the pivot varies depending
+on the items in the list. Wherever the pivot ends up, that is its final position in the sorted list, we don't need to
+move it.
+3) Divide and conquer. Reapply the process recursively to the sublists formed by splitting the list at the pivot. One
+sublist consists of all items to the left of the pivot and the other all the items to the right.
+4) The process terminates each time it encounters a sublist with fewer than 2 items
+Time complexity - O(n^2) worst case, O(n log n) best case because we go through n elements and subdivide into log n
+Memory complexity - O(n) worst case, O(log n) best case
+Performance can vary heavily depending on what value is chosen as the pivot, thus to avoid poor performance, it can be 
+advantageous to select a random position or a median value of first/middle/last elements as the start location
+"""
+
+def quickSort(arr):
+    n = len(arr)
+
+    # Establish base case
+    if n < 2:
+        return arr
+
+    current_position = 0
