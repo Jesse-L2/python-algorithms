@@ -123,8 +123,6 @@ def merge_sort(array):
     return array
 
 
-
-
 """
 Time Complexity - O(nlog(n)) because we repeatedly divide the array into halves and it takes linear time to merge each 
 of those halves. 
@@ -178,6 +176,7 @@ Performance can vary heavily depending on what value is chosen as the pivot, thu
 advantageous to select a random position or a median value of first/middle/last elements as the start location
 """
 
+
 def quickSort(arr):  # Recursive solution
     n = len(arr)
     # Establish base case
@@ -192,3 +191,51 @@ def quickSort(arr):  # Recursive solution
         greater_values = [i for i in arr[1:] if i > pivot]
         return quickSort(lesser_values) + [pivot] + quickSort(greater_values)  # Recursive call
 
+
+def regularQuickSort(arr):  # Quicksort without list comprehensions
+    lesser_numbers = []
+    equals_pivot = []
+    greater_numbers = []
+
+    if len(arr) >= 2:
+        pivot = arr[0]  # Select first element of arr as pivot
+        for element in arr:
+            if element < pivot:
+                lesser_numbers.append(element)
+            elif element > pivot:
+                greater_numbers.append(element)
+            elif element == pivot:
+                equals_pivot.append(element)
+        # join our subgroups and continue sorting if needed
+        return regularQuickSort(lesser_numbers) + equals_pivot + regularQuickSort(greater_numbers)
+
+    # if arr has 1 or 0 elements
+    else:
+        return arr
+
+
+def quickSortWithPartition(arr, start=0, end=None):
+    """In-place Quicksort (no added memory required)"""
+
+    def qSort(arr, start=0, end=None):
+        if start < end:
+            pivot = partition(arr, start, end)
+            qSort(arr, start, pivot - 1)  # Perform quicksort on the left side of the pivot
+            qSort(arr, pivot + 1, end)  # Perform quicksort on the right side of the pivot
+
+    def partition(arr, start=0, end=None):
+        pivot = start
+        i = start + 1
+        for j in range(start + 1, end + 1):
+            if arr[j] < arr[pivot]:  # If the element at pos i is less than or equal to first value
+                arr[i], arr[j] = arr[i], arr[j]  # Perform swap
+                i += 1  # Move i pointer to the right by 1
+        arr[i - 1], arr[start] = arr[start], arr[i - 1]  # Swap start and pivot
+        return pivot
+
+
+
+    return qSort(arr, start, end)
+
+
+print(quickSortWithPartition(arr_1, 0, len(arr_1) - 1))
